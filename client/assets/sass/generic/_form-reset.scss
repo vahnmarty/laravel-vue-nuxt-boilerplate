@@ -1,0 +1,40 @@
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+// We need to have the linter ignore '::-ms-clear', as 'clear' is a standard CSS property.
+// sass-lint:disable-block no-vendor-prefixes
+::-ms-clear,
+::-ms-reveal {
+  display: none;
+}
+
+::-webkit-search-cancel-button,
+::-webkit-search-results-button,
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button,
+::-webkit-search-cancel-button,
+[type=search] {
+  appearance: none;
+}
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.form-check-input{
+	transform: scale(1.5);
+	margin-top: 0;
+	margin-right: 1em;
+	position: initial;
+}
+
+.btn{
+	border-radius: 0;
+}
+
+.btn-success{
+	background-color: $darkgreen;
+}

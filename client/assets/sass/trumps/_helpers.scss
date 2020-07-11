@@ -1,0 +1,22 @@
+// Helper classes, to be used with other classes rather than repeating their function.
+
+.bg--green{
+	background-color: $green;
+}
+
+.bg--black{
+	background-color:$black;
+}
+
+.fine-print{
+	opacity: 0.7;
+}
+
+hr.line-white{
+	border-top: 2px solid $white;
+}
+
+
+.site-section{
+	padding: 30px 0;
+}

@@ -1,0 +1,78 @@
+/* Main site header */
+
+.site-header{
+
+	&__top{
+
+		max-height: 48px;
+		overflow: hidden;
+		background: linear-gradient(to right,  $black 0%,$black 25%,$green 25%,$green 100%);
+
+		.site-menu {
+
+			display: flex;
+		    flex-direction: row;
+		    justify-content: space-around;
+
+		    li{
+		    	margin-right: 10px;
+		    }
+
+			a{
+				color: $white;
+				opacity: 0.7;
+				font-size: 14px;
+				&:hover{
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__bottom{
+		.site-menu{
+
+			li{
+				padding-left: 2em;
+			}
+
+			a{
+				color: $white;
+				opacity: 0.7;
+				font-size: 14px;
+				&:hover{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+.site-logo{
+	position: absolute;
+	width: 90%;
+	height: auto;
+	bottom:0;
+}
+
+.triangle-bottomleft {
+  width: 0;
+  height: 0;
+  border-bottom: 48px solid $black;
+  border-right: 48px solid transparent;
+  border-left:30px solid $black;
+  position: absolute;
+  left: 25%;
+  top: 0;
+}
+
+.flag-icon{
+	position: absolute;
+    top: -7px;
+}
+
+
+.link-active{
+	opacity: 1 !important;
+	font-weight: bolder;
+}

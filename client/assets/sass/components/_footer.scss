@@ -1,0 +1,18 @@
+/* Main site footer */
+
+.site-footer{
+
+	ul {
+		li{
+			margin-bottom: 10px;
+		}
+		a{
+			color: #fff;
+			opacity: 0.7;
+			text-decoration: none;
+			&:hover{
+				opacity: 1;
+			}
+		}
+	}
+}

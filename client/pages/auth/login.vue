@@ -56,6 +56,10 @@
 import Form from 'vform'
 
 export default {
+
+  layout: 'frontend',
+
+  
   head () {
     return { title: this.$t('login') }
   },

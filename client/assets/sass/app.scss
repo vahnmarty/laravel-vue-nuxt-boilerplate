@@ -1,9 +1,29 @@
-@import 'variables';
 @import '~bootstrap/scss/bootstrap';
-@import '~sweetalert2/src/sweetalert2';
-@import '@fortawesome/fontawesome-svg-core/styles.css';
 
-@import 'elements/card';
-@import 'elements/navbar';
-@import 'elements/buttons';
-@import 'elements/transitions';
+// Tools and Settings: Global SASS variables, functions and mixins.
+@import 'tools/functions';
+@import 'settings/settings';
+@import 'tools/mixins';
+
+
+// Generic: Very far reaching selectors and font imports. In this case, we set box-sizing and reset browsers defaults.
+@import 'generic/reset';
+@import 'generic/form-reset';
+
+
+// Base: Default styling on classless elements, such as html/body and type elements.
+@import 'base/root';
+@import 'base/type';
+
+
+// Components: The bulk of our code: Defined peices of the site selected with classes and using BEM where appropriate.
+@import 'components/header';
+@import 'components/footer';
+@import 'components/grid';
+@import 'components/nav';
+
+
+// Trumps: Nothing to do with The Donald, though we should probably build a wall around it.
+// Overrides, helpers and utilities; our most specific selectors that should always trump earlier rules.
+@import 'trumps/helpers';
+@import 'trumps/shame';

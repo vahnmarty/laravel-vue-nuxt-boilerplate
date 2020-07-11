@@ -1,0 +1,15 @@
+/* Grid system */
+
+.main-container{
+	background-color: $gray;
+	//min-height: calc(100vh - 60px);	
+	padding-bottom: 200px !important;
+}
+
+
+.card {
+
+	&--success{
+		border-left: 10px solid $darkgreen;
+	}	
+}
