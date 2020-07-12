@@ -2,7 +2,7 @@
   <div class="layout">
     <navbar />
 
-    <div class="site-content py-5">
+    <div class="site-content py-5 bg-light">
     	 <nuxt />
     </div>
     

@@ -43,7 +43,8 @@ export default {
 
       return { success: true, status: data.status }
     } catch (e) {
-      return { success: false, status: e.response.data.status }
+      return
+      //return { success: false, status: e.response.data.status }
     }
   }
 }

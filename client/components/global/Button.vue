@@ -5,7 +5,8 @@
     'btn-lg': large,
     'btn-loading': loading
   }" class="btn"
-  >
+  > 
+    <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     <slot />
   </button>
 </template>

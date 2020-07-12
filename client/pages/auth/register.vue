@@ -10,10 +10,18 @@
         <form @submit.prevent="register" @keydown="form.onKeydown($event)">
           <!-- Name -->
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">First Name</label>
             <div class="col-md-7">
-              <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }" type="text" name="name" class="form-control">
-              <has-error :form="form" field="name" />
+              <input v-model="form.first_name" :class="{ 'is-invalid': form.errors.has('first_name') }" type="text" name="first_name" class="form-control" required placeholder="First Name">
+              <has-error :form="form" field="first_name" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label text-md-right">Last Name</label>
+            <div class="col-md-7">
+              <input v-model="form.last_name" :class="{ 'is-invalid': form.errors.has('last_name') }" type="text" name="last_name" class="form-control" required placeholder="Last Name">
+              <has-error :form="form" field="last_name" />
             </div>
           </div>
 
@@ -21,8 +29,8 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email" class="form-control">
-              <has-error :form="form" field="email" />
+              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" type="email" name="email" class="form-control" placeholder="Email Address">
+              <has-error :form="form" field="email" required/>
             </div>
           </div>
 
@@ -30,7 +38,7 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" name="password" class="form-control">
+              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" type="password" name="password" class="form-control" required placeholder="Password">
               <has-error :form="form" field="password" />
             </div>
           </div>
@@ -39,9 +47,7 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('confirm_password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" type="password" name="password_confirmation"
-                     class="form-control"
-              >
+              <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" type="password" name="password_confirmation" class="form-control" required placeholder="Confirm Password">
               <has-error :form="form" field="password_confirmation" />
             </div>
           </div>
@@ -52,9 +58,6 @@
               <v-button :loading="form.busy">
                 {{ $t('register') }}
               </v-button>
-
-              <!-- GitHub Login Button -->
-              <login-with-github />
             </div>
           </div>
         </form>
@@ -73,35 +76,43 @@ export default {
 
   data: () => ({
     form: new Form({
-      name: '',
+      first_name: '',
+      last_name:'',
       email: '',
       password: '',
-      password_confirmation: ''
+      password_confirmation: '',
     }),
     mustVerifyEmail: false
   }),
 
   methods: {
     async register () {
-      // Register the user.
-      const { data } = await this.form.post('/register')
 
-      // Must verify email fist.
-      if (data.status) {
-        this.mustVerifyEmail = true
-      } else {
-        // Log in the user.
-        const { data: { token } } = await this.form.post('/login')
+      try {
+        this.form.busy = true
+        let data = await this.form.post('/register')
+        // Must verify email fist.
+        if (data.status) {
+          this.mustVerifyEmail = true
+        } else {
+          // Log in the user.
+          const { data: { token } } = await this.form.post('/login')
 
-        // Save the token.
-        this.$store.dispatch('auth/saveToken', { token })
+          // Save the token.
+          this.$store.dispatch('auth/saveToken', { token })
 
-        // Update the user.
-        await this.$store.dispatch('auth/updateUser', { user: data })
+          // Update the user.
+          await this.$store.dispatch('auth/updateUser', { user: data })
 
-        // Redirect home.
-        this.$router.push({ name: 'home' })
+          // Redirect home.
+          this.$router.push({ name: 'home' })
+        }
+      } catch (e) {
+        this.form.busy = false
+        return
       }
+
+      
     }
   }
 }
