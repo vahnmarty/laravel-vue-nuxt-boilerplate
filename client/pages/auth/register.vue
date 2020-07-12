@@ -70,6 +70,9 @@
 import Form from 'vform'
 
 export default {
+
+  middleware: 'redirectIfAuthenticated',
+  
   head () {
     return { title: this.$t('register') }
   },

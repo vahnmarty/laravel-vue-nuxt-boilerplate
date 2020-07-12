@@ -58,6 +58,7 @@ import Form from 'vform'
 export default {
 
   layout: 'frontend',
+  middleware: 'redirectIfAuthenticated',
 
   
   head () {
