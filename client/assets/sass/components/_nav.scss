@@ -1,1 +1,34 @@
 /* All navigation styles, including main nav, pagination, next/prev links etc. */
+
+.sidebar{
+	width: $app_width;
+	background-color: #000;
+	float: left;
+	min-height: calc(100vh - #{$nav_height});
+}
+
+.sidebar-nav{
+	border-bottom: 0;
+	box-shadow: none;
+
+	.ul-nav{
+		padding-left: 0;
+	}
+
+	.nav-item{
+		&:hover{
+			background-color: rgba(255,255,255,0.2);
+		}
+	}
+	.nav-link{
+		color: #fff;
+		opacity: 0.7;
+
+		&:hover{
+			opacity: 1;
+		}
+	}
+}
+
+
+

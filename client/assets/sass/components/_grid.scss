@@ -13,3 +13,8 @@
 		border-left: 10px solid $darkgreen;
 	}	
 }
+
+.app-container{
+	margin-left: $app_width;
+	min-height: calc(100vh - #{$nav_height});
+}

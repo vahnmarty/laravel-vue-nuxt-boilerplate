@@ -7,7 +7,8 @@
 <script>
 export default {
   middleware: 'auth',
-
+  layout: 'client',
+  
   head () {
     return { title: this.$t('home') }
   }

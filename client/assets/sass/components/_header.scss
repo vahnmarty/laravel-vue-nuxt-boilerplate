@@ -76,3 +76,34 @@
 	opacity: 1 !important;
 	font-weight: bolder;
 }
+
+.app-header{
+	background-color:#ddd;
+	position: relative;
+
+	.img-avatar{
+		width: 30px;
+		height: 30px;
+		max-width: 30px;
+		max-height: 30px;
+		overflow: hidden;
+		border-radius: 50%;
+	}
+
+	.navbar-brand{
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 200px;
+	    background: #000;
+	    bottom: 0;
+	}
+
+	.navbar-nav {
+	    -webkit-box-orient: horizontal;
+	    -webkit-box-direction: normal;
+	    flex-direction: row;
+	    -webkit-box-align: center;
+	    align-items: center;
+	}
+}
